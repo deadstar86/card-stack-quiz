@@ -1,28 +1,20 @@
+// src/App.js
 import React, { useState } from 'react';
-import useCSVImport from './hooks/useCSVImport';
-import CardStack from './components/CardStack';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import Quiz from './components/Quiz';
+import './App.css';
 
 function App() {
-  const { cards, importCSV } = useCSVImport();
-  const [file, setFile] = useState(null);
-
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
-
-  const handleFileUpload = () => {
-    if (file) {
-      importCSV(file);
-    }
-  };
-
+  const [questions, setQuestions] = useState([]);
+  
   return (
-    <div className="App">
-      <h1>Card Stack Quiz</h1>
-      <input type="file" accept=".csv" onChange={handleFileChange} />
-      <button onClick={handleFileUpload}>Upload CSV</button>
-      {cards.length > 0 && <CardStack cards={cards} />}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home setQuestions={setQuestions} />} />
+        <Route path="/quiz" element={<Quiz questions={questions} />} />
+      </Routes>
+    </Router>
   );
 }
 

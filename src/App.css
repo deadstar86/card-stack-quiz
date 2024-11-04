@@ -1,38 +1,117 @@
-.App {
-  text-align: center;
+/* src/App.css */
+
+body, html {
+  margin: 0;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.home, .quiz {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  min-height: 100vh;
+  color: #333;
 }
 
-.App-link {
-  color: #61dafb;
+.home h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.start-button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.start-button:hover {
+  background-color: #555;
+}
+
+.quiz header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.exit {
+  color: #333;
+  text-decoration: none;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.content h2 {
+  font-size: 2.5em;
+}
+
+.toggle-text {
+  font-size: 1em;
+  margin-top: 20px;
+  color: #333;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-left, .nav-right {
+  width: 50%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .content h2 {
+    font-size: 2em;
   }
-  to {
-    transform: rotate(360deg);
+  .toggle-text {
+    font-size: 0.9em;
   }
+}
+
+
+/* New styles for navigation buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.nav-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #333;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #f2f2f2;
 }
