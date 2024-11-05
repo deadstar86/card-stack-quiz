@@ -6,10 +6,11 @@ function Quiz({ questions }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [displayMode, setDisplayMode] = useState("teaser");
   const [showAnswer, setShowAnswer] = useState(false);
+  const [fadeClass, setFadeClass] = useState(""); // New state for fade effect
 
   const currentQuestion = questions[currentIndex];
 
-  // Define category colors and more vibrant variations for button pop
+  // Define category colors
   const categoryColors = {
     "History": "#FFDD94",
     "Science": "#C8E6C9",
@@ -26,19 +27,25 @@ function Quiz({ questions }) {
   };
 
   const backgroundColor = categoryColors[currentQuestion.category] || "#F2A39A";
-  const buttonColor = `rgba(0, 0, 0, 0.2)`; 
 
-  // Swipe navigation functions
+  // Add fade effect on question change
+  const switchQuestion = (newIndex) => {
+    setFadeClass("fade-out"); // Apply fade-out class
+    setTimeout(() => {
+      setCurrentIndex(newIndex);
+      setFadeClass("fade-in"); // Apply fade-in class
+      setShowAnswer(false); // Hide answer for the new question
+    }, 300); // Transition duration (matches CSS)
+  };
+
   const goNext = () => {
-    setDisplayMode("teaser");
-    setShowAnswer(false);
-    setCurrentIndex((currentIndex + 1) % questions.length);
+    const nextIndex = (currentIndex + 1) % questions.length;
+    switchQuestion(nextIndex);
   };
 
   const goPrevious = () => {
-    setDisplayMode("teaser");
-    setShowAnswer(false);
-    setCurrentIndex((currentIndex - 1 + questions.length) % questions.length);
+    const prevIndex = (currentIndex - 1 + questions.length) % questions.length;
+    switchQuestion(prevIndex);
   };
 
   const toggleQuestionView = () => {
@@ -60,7 +67,8 @@ function Quiz({ questions }) {
         </span>
       </header>
 
-      <div className="content">
+      {/* Apply fade class to content container */}
+      <div className={`content ${fadeClass}`}>
         {displayMode === "teaser" && <h2 className="teaser-text">{currentQuestion.teaser}</h2>}
         
         {displayMode === "question" && (
@@ -71,12 +79,10 @@ function Quiz({ questions }) {
               <button 
                 className="toggle-answer-btn" 
                 onClick={() => setShowAnswer(!showAnswer)}
-                style={{ backgroundColor: buttonColor }}
               >
                 {showAnswer ? "Hide Answer" : "Show Answer"}
               </button>
 
-              {/* Apply the `visible` class conditionally */}
               <p className={`answer-text ${showAnswer ? "visible" : ""}`}>
                 {currentQuestion.answer}
               </p>
@@ -89,18 +95,17 @@ function Quiz({ questions }) {
         <button 
           className="toggle-question-btn" 
           onClick={toggleQuestionView}
-          style={{ backgroundColor: buttonColor }}
         >
           {displayMode === "teaser" ? "Show Question" : "Hide Question"}
         </button>
 
         <div className="nav-arrows">
-          <div onClick={goPrevious} className="nav-arrow" style={{ color: buttonColor }}>
+          <div onClick={goPrevious} className="nav-arrow">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
-          <div onClick={goNext} className="nav-arrow" style={{ color: buttonColor }}>
+          <div onClick={goNext} className="nav-arrow">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M9 6L15 12L9 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
