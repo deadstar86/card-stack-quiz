@@ -1,21 +1,13 @@
-teaser,question,answer,bonus_question,bonus_answer
-"Ancient Rome","What was the primary language spoken in Ancient Rome?","Latin","Name one modern language heavily influenced by Latin.","Italian"
-"Space Exploration","What was the first satellite to orbit Earth?","Sputnik","Which country launched the Sputnik satellite?","Soviet Union"
-"Famous Artists","Who painted the Mona Lisa?","Leonardo da Vinci","In which city is the Mona Lisa displayed?","Paris"
-"Physics","What is the formula for calculating force?","Force = Mass x Acceleration","Who developed the laws of motion?","Isaac Newton"
-"American History","Who was the first president of the United States?","George Washington","Which city was the first U.S. capital?","New York City"
-"Greek Mythology","Who is the Greek god of the underworld?","Hades","Who is Hades' wife in Greek mythology?","Persephone"
-"Chess","Which chess piece can only move diagonally?","Bishop","What is the only piece that can jump over others?","Knight"
-"Hollywood","Who directed the movie *Jaws*?","Steven Spielberg","What year was *Jaws* released?","1975"
-"Biology","What is the powerhouse of the cell?","Mitochondria","Which process occurs in the mitochondria?","Cellular respiration"
-"Mathematics","What is the value of Pi to two decimal places?","3.14","Which Greek letter is used to represent Pi?","π"
-"World Capitals","What is the capital city of Japan?","Tokyo","Tokyo is located on which Japanese island?","Honshu"
-"Literature","Who wrote *Pride and Prejudice*?","Jane Austen","Which other famous novel did Austen write?","Sense and Sensibility"
-"Music","Who composed the *Four Seasons*?","Antonio Vivaldi","What era of music is Vivaldi associated with?","Baroque"
-"Chemistry","What is the chemical symbol for gold?","Au","What is gold's atomic number?","79"
-"Sports","How many players are on a soccer team?","11","What country won the first FIFA World Cup?","Uruguay"
-"Technology","Who is known as the father of computing?","Charles Babbage","Which machine did Babbage invent?","Analytical Engine"
-"Geography","What is the largest desert on Earth?","Sahara","On which continent is the Sahara Desert located?","Africa"
-"Modern History","Who was the British Prime Minister during most of World War II?","Winston Churchill","What was Churchill’s famous “V” hand signal for?","Victory"
-"Physics","What is the speed of light in a vacuum?","299,792 km/s","Who developed the theory of relativity?","Albert Einstein"
-"World War II","What was the code name for the Allied invasion of Normandy?","Operation Overlord","Which country’s troops landed on Omaha Beach?","United States"
+id,category,teaser,questionType,question,answer,bonusQuestion,bonusAnswer,imageURL,options
+1,History,"Ancient Civilizations","fill-in-the-blank","Who is known as the father of geometry?","Euclid","In which country was Euclid born?","Greece","https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Euclid.jpg/220px-Euclid.jpg",
+2,Science,"Physics","multiple choice","What is the formula for force?","F = ma","Who developed the laws of motion?","Isaac Newton",,"F = ma, F = mv, F = e=mc^2, F = p/t"
+3,Geography,"Landmarks","image","Identify this landmark","Eiffel Tower","In which city is the Eiffel Tower located?","Paris","https://upload.wikimedia.org/wikipedia/commons/a/af/Tour_Eiffel_Wikimedia_Commons.jpg",
+4,Pop Culture,"Movie Quotes","fill-in-the-blank","Complete this quote: 'May the _____ be with you.'","Force","What franchise is this quote from?","Star Wars",,
+5,Art & Literature,"Famous Paintings","image","Identify this famous painting","The Starry Night","Who painted 'The Starry Night'?","Vincent van Gogh","https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
+6,Sports & Games,"Olympics","true/false","The Olympics originated in ancient Greece","true","Where did the first modern Olympics take place?","Athens",,
+7,Mythology & Religion,"Greek Gods","fill-in-the-blank","Who is the Greek god of the underworld?","Hades","Who was Hades' wife?","Persephone","https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Hades-et-Pers%C3%A9phone_%28Meyers%29.jpg/800px-Hades-et-Pers%C3%A9phone_%28Meyers%29.jpg",
+8,Music,"Classic Rock","multiple choice","Which band released the album 'Dark Side of the Moon'?","Pink Floyd","Who was the lead singer of Pink Floyd?","Roger Waters",,"Pink Floyd, Led Zeppelin, The Beatles, Queen"
+9,Movies & TV,"Famous Characters","fill-in-the-blank","What is the real name of the superhero known as Batman?","Bruce Wayne","Who played Batman in 'The Dark Knight' trilogy?","Christian Bale",,
+10,Technology,"Inventions","true/false","The telephone was invented by Alexander Graham Bell","true","What year was the telephone invented?","1876",,
+11,Food & Drink,"Popular Dishes","multiple choice","What is the main ingredient in guacamole?","Avocado","Which cuisine is guacamole associated with?","Mexican",,"Avocado, Tomato, Potato, Onion"
+12,Nature & Environment,"Animals","image","Identify this animal","Giant Panda","What is the primary diet of a Giant Panda?","Bamboo","https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG",
