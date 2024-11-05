@@ -6,11 +6,9 @@ function Quiz({ questions }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [displayMode, setDisplayMode] = useState("teaser");
   const [showAnswer, setShowAnswer] = useState(false);
-  const [fadeClass, setFadeClass] = useState(""); // New state for fade effect
 
   const currentQuestion = questions[currentIndex];
 
-  // Define category colors
   const categoryColors = {
     "History": "#FFDD94",
     "Science": "#C8E6C9",
@@ -28,24 +26,16 @@ function Quiz({ questions }) {
 
   const backgroundColor = categoryColors[currentQuestion.category] || "#F2A39A";
 
-  // Add fade effect on question change
-  const switchQuestion = (newIndex) => {
-    setFadeClass("fade-out"); // Apply fade-out class
-    setTimeout(() => {
-      setCurrentIndex(newIndex);
-      setFadeClass("fade-in"); // Apply fade-in class
-      setShowAnswer(false); // Hide answer for the new question
-    }, 300); // Transition duration (matches CSS)
-  };
-
   const goNext = () => {
-    const nextIndex = (currentIndex + 1) % questions.length;
-    switchQuestion(nextIndex);
+    setDisplayMode("teaser");
+    setShowAnswer(false);
+    setCurrentIndex((currentIndex + 1) % questions.length);
   };
 
   const goPrevious = () => {
-    const prevIndex = (currentIndex - 1 + questions.length) % questions.length;
-    switchQuestion(prevIndex);
+    setDisplayMode("teaser");
+    setShowAnswer(false);
+    setCurrentIndex((currentIndex - 1 + questions.length) % questions.length);
   };
 
   const toggleQuestionView = () => {
@@ -67,8 +57,7 @@ function Quiz({ questions }) {
         </span>
       </header>
 
-      {/* Apply fade class to content container */}
-      <div className={`content ${fadeClass}`}>
+      <div className="content">
         {displayMode === "teaser" && <h2 className="teaser-text">{currentQuestion.teaser}</h2>}
         
         {displayMode === "question" && (
