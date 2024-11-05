@@ -1,14 +1,15 @@
 // src/components/Quiz.js
 import React, { useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
 
 function Quiz({ questions }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [displayMode, setDisplayMode] = useState("teaser"); // 'teaser' or 'question'
-  const [showAnswer, setShowAnswer] = useState(false); // Controls answer visibility
+  const [displayMode, setDisplayMode] = useState("teaser");
+  const [showAnswer, setShowAnswer] = useState(false);
 
   const currentQuestion = questions[currentIndex];
 
-  // Define category colors and darker shades
+  // Define category colors and more vibrant variations for button pop
   const categoryColors = {
     "History": "#FFDD94",
     "Science": "#C8E6C9",
@@ -25,29 +26,34 @@ function Quiz({ questions }) {
   };
 
   const backgroundColor = categoryColors[currentQuestion.category] || "#F2A39A";
-  const buttonColor = `rgba(0, 0, 0, 0.3)`; // Darker shade
+  const buttonColor = `rgba(0, 0, 0, 0.2)`; 
 
-  // Navigation functions
+  // Swipe navigation functions
   const goNext = () => {
     setDisplayMode("teaser");
-    setShowAnswer(false); // Reset answer visibility when navigating
+    setShowAnswer(false);
     setCurrentIndex((currentIndex + 1) % questions.length);
   };
 
   const goPrevious = () => {
     setDisplayMode("teaser");
-    setShowAnswer(false); // Reset answer visibility when navigating
+    setShowAnswer(false);
     setCurrentIndex((currentIndex - 1 + questions.length) % questions.length);
   };
 
-  // Toggle between teaser and question display
   const toggleQuestionView = () => {
     setDisplayMode(displayMode === "teaser" ? "question" : "teaser");
-    setShowAnswer(false); // Reset answer visibility each time
+    setShowAnswer(false);
   };
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: goNext,
+    onSwipedRight: goPrevious,
+    trackMouse: true
+  });
+
   return (
-    <div className="quiz" style={{ backgroundColor }}>
+    <div className="quiz" style={{ backgroundColor }} {...swipeHandlers}>
       <header className="header">
         <span className="question-info">
           {currentQuestion.category} - QUESTION #{currentQuestion.id}
@@ -70,7 +76,8 @@ function Quiz({ questions }) {
                 {showAnswer ? "Hide Answer" : "Show Answer"}
               </button>
 
-              <p className={`answer-text ${showAnswer ? "visible" : "hidden"}`}>
+              {/* Apply the `visible` class conditionally */}
+              <p className={`answer-text ${showAnswer ? "visible" : ""}`}>
                 {currentQuestion.answer}
               </p>
             </div>
